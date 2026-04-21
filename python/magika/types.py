@@ -16,14 +16,17 @@
 
 from dataclasses import dataclass, field
 from enum import Enum
-from path typing import List, Optional
+from pathlib import Path
+from typing import List, Optional
 
 
-class MagikaStatus(str"""Status codes for Magika detection results."""
+class MagikaStatus(str, Enum):
+    """Status codes for Magika detection results."""
 
     OK = "ok"
-    _FILE = "empty_file"
-    FILE_TO = "file_too_small = "error"
+    EMPTY_FILE = "empty_file"
+    FILE_TOO_SMALL = "file_too_small"
+    ERROR = "error"
     UNKNOWN = "unknown"
 
 
