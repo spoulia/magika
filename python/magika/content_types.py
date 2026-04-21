@@ -35,6 +35,11 @@ class ContentTypeInfo:
     def __str__(self) -> str:
         return f"{self.label} ({self.mime_type})"
 
+    def __repr__(self) -> str:
+        # More informative repr that includes the group and extension count
+        ext_count = len(self.extensions)
+        return f"ContentTypeInfo(label={self.label!r}, group={self.group!r}, extensions={ext_count})"
+
 
 # Registry of known content types with their metadata
 CONTENT_TYPES_REGISTRY: Dict[ContentTypeLabel, ContentTypeInfo] = {
@@ -94,37 +99,3 @@ CONTENT_TYPES_REGISTRY: Dict[ContentTypeLabel, ContentTypeInfo] = {
     ),
     ContentTypeLabel.UNKNOWN: ContentTypeInfo(
         label=ContentTypeLabel.UNKNOWN,
-        mime_type="application/octet-stream",
-        group="unknown",
-        description="Unknown content type",
-        extensions=[],
-        is_text=False,
-        tags=[],
-    ),
-}
-
-
-def get_content_type_info(label: ContentTypeLabel) -> Optional[ContentTypeInfo]:
-    """Retrieve metadata for a given content type label.
-
-    Args:
-        label: The ContentTypeLabel to look up.
-
-    Returns:
-        ContentTypeInfo if found, otherwise None.
-    """
-    return CONTENT_TYPES_REGISTRY.get(label)
-
-
-def get_all_content_type_labels() -> List[ContentTypeLabel]:
-    """Return all registered content type labels."""
-    return list(CONTENT_TYPES_REGISTRY.keys())
-
-
-def get_text_content_type_labels() -> List[ContentTypeLabel]:
-    """Return labels for all content types classified as text."""
-    return [
-        label
-        for label, info in CONTENT_TYPES_REGISTRY.items()
-        if info.is_text
-    ]
