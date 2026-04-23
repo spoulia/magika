@@ -12,13 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Magika:-powered file typen
-Magika uses a deep learning model the type of files with
+"""Magika: AI-powered file type detection.
+
+Magika uses a deep learning model to identify the type of files with
 high accuracy, going beyond simple magic bytes and extension checks.
 
-Bas>>> from magika import Magika
+Basic usage::
+
+    >>> from magika import Magika
+    >>> from pathlib import Path
     >>> m = Magika()
-    >>> result = m.identify_path(Path"test.py"))
+    >>> result = m.identify_path(Path("test.py"))
     >>> print(result.output.ct_label)  # e.g., 'python'
 """
 
