@@ -87,7 +87,8 @@ class MagikaOutputResult:
             f"MagikaOutputResult("
             f"ct_label={self.ct_label!r}, "
             f"score={self.score:.4f}, "
-            f"mime_type={self.mime_type!r}"
+            f"mime_type={self.mime_type!r}, "
+            f"is_text={self.is_text}"
             f")"
         )
 
