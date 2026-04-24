@@ -24,6 +24,11 @@ Basic usage::
     >>> m = Magika()
     >>> result = m.identify_path(Path("test.py"))
     >>> print(result.output.ct_label)  # e.g., 'python'
+
+Note: You can also use identify_bytes() for in-memory content::
+
+    >>> result = m.identify_bytes(b"#!/usr/bin/env python3\nprint('hello')")
+    >>> print(result.output.ct_label)  # 'python'
 """
 
 from magika.magika import Magika
