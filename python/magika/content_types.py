@@ -40,6 +40,13 @@ class ContentTypeInfo:
         ext_count = len(self.extensions)
         return f"ContentTypeInfo(label={self.label!r}, group={self.group!r}, extensions={ext_count})"
 
+    def has_extension(self, ext: str) -> bool:
+        """Check if this content type is associated with the given file extension.
+
+        The comparison is case-insensitive, so '.PY' and '.py' both match.
+        """
+        return ext.lower() in (e.lower() for e in self.extensions)
+
 
 # Registry of known content types with their metadata
 CONTENT_TYPES_REGISTRY: Dict[ContentTypeLabel, ContentTypeInfo] = {
@@ -90,12 +97,4 @@ CONTENT_TYPES_REGISTRY: Dict[ContentTypeLabel, ContentTypeInfo] = {
     ),
     ContentTypeLabel.JSON: ContentTypeInfo(
         label=ContentTypeLabel.JSON,
-        mime_type="application/json",
-        group="data",
-        description="JSON data",
-        extensions=[".json"],
-        is_text=True,
-        tags=["data", "structured"],
-    ),
-    ContentTypeLabel.UNKNOWN: ContentTypeInfo(
-        label=ContentTypeLabel.UNKNOWN,
+        mime_type="appli
