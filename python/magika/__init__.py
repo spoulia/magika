@@ -29,6 +29,9 @@ Note: You can also use identify_bytes() for in-memory content::
 
     >>> result = m.identify_bytes(b"#!/usr/bin/env python3\nprint('hello')")
     >>> print(result.output.ct_label)  # 'python'
+
+Note: Use identify_paths() (plural) to batch-process multiple files at once,
+which is significantly faster than calling identify_path() in a loop.
 """
 
 from magika.magika import Magika
