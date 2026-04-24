@@ -32,6 +32,9 @@ Note: You can also use identify_bytes() for in-memory content::
 
 Note: Use identify_paths() (plural) to batch-process multiple files at once,
 which is significantly faster than calling identify_path() in a loop.
+
+Note: Access result.output.mime_type and result.output.group for additional
+metadata about the detected file type beyond just the label.
 """
 
 from magika.magika import Magika
